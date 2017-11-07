@@ -25,9 +25,12 @@ public:
   void onBtMul(wxCommandEvent&);
   void onBtDiv(wxCommandEvent&);
   void onBtRes(wxCommandEvent&);
+  void onBtClo(wxCommandEvent&);
+  void onBtBac(wxCommandEvent&);
+  void onBtPoi(wxCommandEvent&);
 private:
-  int valor1;
-  int valor2;
+  float valor1;
+  float valor2;
   string operacion;
   int nClicks;
   float total;
