@@ -51,7 +51,7 @@ void GridSizer::onCls (wxCommandEvent& WXUNUSED (event)) {
 
 
 void GridSizer::onBt1 (wxCommandEvent& WXUNUSED (event)) {
-	display->SetValue("1");
+	display->AppendText("1");
 	nClicks += 1;
 	cout <<"Hola " << nClicks << endl;
 	if (nClicks==1)
@@ -61,7 +61,8 @@ void GridSizer::onBt1 (wxCommandEvent& WXUNUSED (event)) {
 }
 
 void GridSizer::onBt2 (wxCommandEvent& WXUNUSED (event)) {
-	display->SetValue("2");
+	display->AppendText("2");
+
 	nClicks += 1;
 	cout <<"Hola " << nClicks << endl;
 	if (nClicks==1)
@@ -72,7 +73,7 @@ void GridSizer::onBt2 (wxCommandEvent& WXUNUSED (event)) {
 
 
 void GridSizer::onBt3(wxCommandEvent& WXUNUSED (event)){
-	display->SetValue("3");
+	display->AppendText("3");
 	nClicks+=1;
 	if(nClicks==1){
 		valor1=3;
@@ -80,10 +81,11 @@ void GridSizer::onBt3(wxCommandEvent& WXUNUSED (event)){
 	if(nClicks==2){
 		valor2=3;
 	}
+
 }
 
 void GridSizer::onBt4(wxCommandEvent& WXUNUSED(event)){
-	display->SetValue("4");
+	display->AppendText("4");
 	nClicks+=1;
 	if(nClicks==1){
 		valor1=4;
@@ -91,10 +93,12 @@ void GridSizer::onBt4(wxCommandEvent& WXUNUSED(event)){
 	if(nClicks==2){
 		valor2=4;
 	}
+
+
 }
 
 void GridSizer::onBt5(wxCommandEvent& WXUNUSED (event)){
-	display->SetValue("5");
+	display->AppendText("5");
 	nClicks+=1;
 	if(nClicks==1){
 		valor1=5;
@@ -105,7 +109,7 @@ void GridSizer::onBt5(wxCommandEvent& WXUNUSED (event)){
 }
 
 void GridSizer::onBt6(wxCommandEvent& WXUNUSED (event)){
-	display->SetValue("6");
+	display->AppendText("6");
 	nClicks+=1;
 	if(nClicks==1){
 		valor1=6;
@@ -113,10 +117,11 @@ void GridSizer::onBt6(wxCommandEvent& WXUNUSED (event)){
 	if(nClicks==2){
 		valor2=6;
 	}
+
 }
 
 void GridSizer::onBt7(wxCommandEvent& WXUNUSED (event)){
-	display->SetValue("7");
+	display->AppendText("7");
 	nClicks+=1;
 	if(nClicks==1){
 		valor1=7;
@@ -127,7 +132,8 @@ void GridSizer::onBt7(wxCommandEvent& WXUNUSED (event)){
 }
 
 void GridSizer::onBt8(wxCommandEvent& WXUNUSED (event)){
-	display->SetValue("8");
+	display->AppendText("8");
+
 	nClicks+=1;
 	if(nClicks==1){
 		valor1=8;
@@ -138,7 +144,7 @@ void GridSizer::onBt8(wxCommandEvent& WXUNUSED (event)){
 }
 
 void GridSizer::onBt9(wxCommandEvent& WXUNUSED (event)){	
-	display->SetValue("9");
+	display->AppendText("9");
 	nClicks+=1;
 	if(nClicks==1){
 		valor1=9;
@@ -149,31 +155,67 @@ void GridSizer::onBt9(wxCommandEvent& WXUNUSED (event)){
 }
 
 void GridSizer::onBtIgu(wxCommandEvent& WXUNUSED (event)){
+	if(operando=="+"){
+		string texto=(string)display->GetValue();
+		operando2=atoi(texto.c_str());
+		total=operando1+operando2;
+	}
+	if(operando=="-"){
+		string texto=(string)display->GetValue();
+		operando2=atoi(texto.c_str());
+		total=operando1-operando2;
+	}
+	if(operando=="/"){
+		string texto=(string)display->GetValue();
+		operando2=atoi(texto.c_str());
+		total=operando1/operando2;
+	}
+	if(operando=="*"){
+		string texto=(string)display->GetValue();
+		operando2=atoi(texto.c_str());
+		total=operando1*operando2;
+	}
 	cout << "Resultado " << total << endl;
 	ostringstream convert;
 	string resul;
 	convert<<total;
 	resul=convert.str();
 	display->SetValue(resul);
-	nClicks=0;
+	
 
 }
 
 void GridSizer::onBtSum (wxCommandEvent& WXUNUSED (event)) {
-	total = valor1 + valor2;
+	string texto=(string)display->GetValue();
+	operando1=atoi(texto.c_str());
+	display->Clear();
+	operando="+";
+	nClicks=0;
 	
 }
 void GridSizer::onBtMul (wxCommandEvent& WXUNUSED (event)) {
-	total = valor1 * valor2;
+	string texto=(string)display->GetValue();
+	operando1=atoi(texto.c_str());
+	display->Clear();
+	operando="*";
+	nClicks=0;
 	
 }
 
 void GridSizer::onBtDiv (wxCommandEvent& WXUNUSED (event)) {
-	total = valor1 / valor2;
+	string texto=(string)display->GetValue();
+	operando1=atoi(texto.c_str());
+	display->Clear();
+	operando="/";
+	nClicks=0;
 	
 }
 void GridSizer::onBtRes (wxCommandEvent& WXUNUSED (event)) {
-	total = valor1 - valor2;
+	string texto=(string)display->GetValue();
+	operando1=atoi(texto.c_str());
+	display->Clear();
+	operando="-";
+	nClicks=0;
 	
 }
 
@@ -183,8 +225,8 @@ void GridSizer::onBtClo (wxCommandEvent& WXUNUSED (event)) {
 }
 
 void GridSizer::onBtBac (wxCommandEvent& WXUNUSED (event)) {
-	valor1=0;
-	valor2=0;
+	//valor1=0;
+	//valor2=0;
 	nClicks=0;
 	
 }

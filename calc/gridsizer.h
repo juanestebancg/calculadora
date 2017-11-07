@@ -1,5 +1,6 @@
 #include <wx/wx.h>
 #include <iostream>
+#include <string.h>
 using namespace std;
 
 class GridSizer : public wxFrame
@@ -29,9 +30,11 @@ public:
   void onBtBac(wxCommandEvent&);
   void onBtPoi(wxCommandEvent&);
 private:
-  float valor1;
-  float valor2;
-  string operacion;
+  string valor1;
+  string valor2;
+  string operando;
+  int operando1;
+  int operando2;
   int nClicks;
   float total;
   	
