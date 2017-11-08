@@ -12,6 +12,7 @@ public:
   wxTextCtrl *display;
   
   void onCls (wxCommandEvent&);
+  void onBt0 (wxCommandEvent&);
   void onBt1 (wxCommandEvent&);
   void onBt2 (wxCommandEvent&);
   void onBt3(wxCommandEvent&);
@@ -30,6 +31,8 @@ public:
   void onBtBac(wxCommandEvent&);
   void onBtPoi(wxCommandEvent&);
 private:
+  string texto1;
+  string texto2;
   string valor1;
   string valor2;
   string operando;
